@@ -527,8 +527,8 @@ main section { padding: 80px 0; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding-top: 140px; /* 增加顶部留白 */
+  justify-content: center; /* Changed from flex-start to center */
+  padding-top: 0; /* Removed padding-top */
   overflow: hidden;
 }
 
@@ -537,7 +537,7 @@ main section { padding: 80px 0; }
   z-index: 10;
   text-align: center;
   max-width: 800px;
-  margin-bottom: 60px;
+  margin-bottom: 0; /* Removed bottom margin to ensure perfect centering */
 }
 
 .hero-title {
