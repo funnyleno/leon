@@ -7,9 +7,12 @@ const selectors = {
   moduleList: document.getElementById('module-list'),
   quickModuleBtn: document.getElementById('quick-module-btn'),
   exportConfigBtn: document.getElementById('export-config'),
+  exportConfigCta: document.getElementById('export-config-cta'), // 新增
   themeToggle: document.getElementById('theme-toggle'),
-  shareBtn: document.getElementById('share-btn'),
+  shareBtn: document.getElementById('share-btn'), // Feature Showcase 中的按钮
+  shareFeatureBtn: document.getElementById('share-feature-btn'), // 新增
   shareGuideBtn: document.getElementById('share-guide'),
+  shareGuideCta: document.getElementById('share-guide-cta'), // 新增
   shareCta: document.getElementById('share-cta'),
   openLabBtn: document.getElementById('open-lab'),
   labCloseBtn: document.getElementById('lab-close'),
@@ -495,24 +498,26 @@ function renderModuleLibrary(){
   if(!selectors.moduleList) return;
   selectors.moduleList.innerHTML = '';
   modules.forEach(mod => {
-    const card = document.createElement('article');
-    card.className = 'module-card';
-    if(state.activeModules.includes(mod.id)) card.classList.add('active');
-    const tagLine = mod.tags?.map(tag => `<span class="tag">${tag}</span>`).join('') || '';
-    const addDisabled = state.activeModules.includes(mod.id);
-    card.innerHTML = `
-      <header>
-        <h4>${mod.title}</h4>
-        <span class="tag">${mod.stage || 'Draft'}</span>
-      </header>
-      <p>${mod.description}</p>
-      <div class="tags">${tagLine}</div>
-      <div class="actions">
-        <button class="${addDisabled ? 'ghost-btn is-active' : 'primary-btn'}" data-action="add" data-id="${mod.id}" ${addDisabled ? 'disabled' : ''}>${addDisabled ? '已在工作区' : '加入工作区'}</button>
-        <button class="ghost-btn" data-action="inspect" data-id="${mod.id}">查看详情</button>
+    const item = document.createElement('div');
+    item.className = 'control-item';
+    // if(state.activeModules.includes(mod.id)) item.classList.add('active'); // 不再需要高亮整个条目，因为有按钮状态
+    
+    const isActive = state.activeModules.includes(mod.id);
+    
+    item.innerHTML = `
+      <span style="font-size: 18px;">${mod.icon || '🧩'}</span>
+      <div style="flex: 1;">
+        <div style="font-weight: 500;">${mod.title}</div>
+        <div style="font-size: 12px; opacity: 0.7;">${mod.stage || 'Draft'}</div>
+      </div>
+      <div style="display: flex; gap: 8px;">
+        <button class="ghost-btn" style="padding: 4px 10px; font-size: 11px;" data-action="inspect" data-id="${mod.id}">详情</button>
+        <button class="${isActive ? 'ghost-btn' : 'primary-btn'}" style="padding: 4px 10px; font-size: 11px;" data-action="toggle" data-id="${mod.id}">
+          ${isActive ? '移除' : '添加'}
+        </button>
       </div>
     `;
-    selectors.moduleList.appendChild(card);
+    selectors.moduleList.appendChild(item);
   });
 }
 
@@ -1055,7 +1060,15 @@ function handleModuleListClick(event){
   if(!btn) return;
   const id = btn.dataset.id;
   const action = btn.dataset.action;
-  if(action === 'add'){ addModule(id); }
+  
+  if(action === 'toggle'){
+    if(state.activeModules.includes(id)){
+      removeModule(id);
+    } else {
+      addModule(id);
+    }
+  }
+  if(action === 'add'){ addModule(id); } // 保持兼容
   if(action === 'inspect'){ openModuleDetails(id); }
 }
 
@@ -1250,19 +1263,34 @@ function initEvents(){
   selectors.moduleList?.addEventListener('click', handleModuleListClick);
   selectors.featureCanvas?.addEventListener('click', handleFeatureCanvasClick);
   selectors.quickModuleBtn?.addEventListener('click', createCustomModule);
+  
+  // 导出配置
   selectors.exportConfigBtn?.addEventListener('click', exportConfig);
+  selectors.exportConfigCta?.addEventListener('click', exportConfig);
+
+  // 主题切换
   selectors.themeToggle?.addEventListener('click', () => {
     const current = document.documentElement.getAttribute('data-theme');
     const next = current === 'dark' ? 'light' : 'dark';
     applyTheme(next);
     showToast(`已切换至${next === 'dark' ? '暗色' : '亮色'}模式`);
   });
+
+  // 分享功能
   selectors.shareBtn?.addEventListener('click', handleShare);
+  selectors.shareFeatureBtn?.addEventListener('click', handleShare);
   selectors.shareCta?.addEventListener('click', handleShare);
+  
+  // 分享指南
   selectors.shareGuideBtn?.addEventListener('click', openShareGuide);
+  selectors.shareGuideCta?.addEventListener('click', openShareGuide);
+
+  // 实验室控制
   selectors.openLabBtn?.addEventListener('click', openLab);
   selectors.labCloseBtn?.addEventListener('click', closeLab);
   selectors.commandLab?.addEventListener('click', handleLabAction);
+  
+  // 模态框控制
   selectors.modalClose?.addEventListener('click', closeModal);
   selectors.modal?.addEventListener('click', (event)=>{
     if(event.target === selectors.modal){
@@ -1271,24 +1299,34 @@ function initEvents(){
     }
     handleModalClick(event);
   });
+
+  // 布局切换
   document.querySelectorAll('[data-layout]').forEach(btn => {
     btn.addEventListener('click', () => applyLayout(btn.dataset.layout));
   });
+
+  // 快速导览 / 观看演示
   selectors.tourBtn?.addEventListener('click', () => {
-    openModal(`
-      <h2>快速入门指引</h2>
-      <ol style="line-height:1.65;padding-left:1.2rem;color:var(--text-muted)">
-        <li>在训练工坊的模块仓库中激活所需能力，或点击“快速创建”生成占位模块。</li>
-        <li>调整工作区排布并挂载真实数据，逐步打磨课程、导师与资源模块。</li>
-        <li>前往功能实验室执行重置、同步或查看调试信息。</li>
-        <li>复制知农课堂链接，邀请团队成员协同共建。</li>
-      </ol>
-      <footer style="margin-top:1.2rem;display:flex;gap:0.6rem">
-        <button class="primary-btn" data-scroll="#studio">直达训练工坊</button>
-        <button class="ghost-btn" data-scroll="#timeline">查看路线图</button>
-      </footer>
-    `);
+    const featureSection = document.querySelector('.feature-showcase');
+    if (featureSection) {
+      featureSection.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // 如果找不到 Feature Showcase，则显示原来的模态框
+      openModal(`
+        <h2>快速入门指引</h2>
+        <ol style="line-height:1.65;padding-left:1.2rem;color:var(--text-muted)">
+          <li>在训练工坊的模块仓库中激活所需能力，或点击“快速创建”生成占位模块。</li>
+          <li>调整工作区排布并挂载真实数据，逐步打磨课程、导师与资源模块。</li>
+          <li>前往功能实验室执行重置、同步或查看调试信息。</li>
+          <li>复制知农课堂链接，邀请团队成员协同共建。</li>
+        </ol>
+        <footer style="margin-top:1.2rem;display:flex;gap:0.6rem">
+          <button class="primary-btn" data-scroll="#studio">直达训练工坊</button>
+        </footer>
+      `);
+    }
   });
+
   document.addEventListener('keydown', (event) => {
     if(event.key === 'Escape'){
       if(!selectors.modal?.classList.contains('hidden')) closeModal();

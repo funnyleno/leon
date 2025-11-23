@@ -1,6 +1,7 @@
 param(
     [string]$RepoUrl = "https://github.com/funnyleno/leon.git",
-    [string]$Branch  = "main"
+    [string]$Branch  = "main",
+    [string]$CommitMessage = ""
 )
 
 $ErrorActionPreference = 'Stop'
@@ -105,13 +106,24 @@ function Stage-And-Commit{
         return $false
     }
 
-    $message = Read-Host 'Commit message (default: Auto publish)'
-    if([string]::IsNullOrWhiteSpace($message)){
-        $message = "Auto publish $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
+    $msg = $CommitMessage
+    if([string]::IsNullOrWhiteSpace($msg)){
+        try {
+            $inputMsg = Read-Host 'Commit message (default: Auto publish)'
+            if(-not [string]::IsNullOrWhiteSpace($inputMsg)){
+                $msg = $inputMsg
+            }
+        } catch {
+            # Ignore error in non-interactive mode
+        }
     }
 
-    git commit -m $message | Out-Null
-    Write-Info "Commit created: $message"
+    if([string]::IsNullOrWhiteSpace($msg)){
+        $msg = "Auto publish $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
+    }
+
+    git commit -m $msg | Out-Null
+    Write-Info "Commit created: $msg"
     return $true
 }
 

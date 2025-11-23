@@ -3,231 +3,138 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>知农课堂框架 · 知识付费乡村技能平台</title>
+  <title>知农课堂 Pro</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <div class="brand">
-        <span class="brand-badge">ZN</span>
-        <div>
-          <h1 class="brand-title">知农课堂框架</h1>
-          <p class="brand-subtitle">基于“知识付费”的乡村成人技能培训电商平台底座</p>
-        </div>
-      </div>
+      <a href="#" class="brand">
+        <span class="brand-title">知农课堂 Pro</span>
+      </a>
       <nav class="nav">
         <a href="#overview">概览</a>
-        <a href="#value">核心价值</a>
-        <a href="#studio">训练工坊</a>
-        <a href="#timeline">里程碑</a>
+        <a href="#features">特性</a>
+        <a href="#studio">工坊</a>
+        <a href="#resources">资源</a>
       </nav>
       <div class="header-tools">
-        <button id="theme-toggle" class="ghost-btn" aria-label="切换主题" title="切换亮暗主题">🌗</button>
-        <button id="share-btn" class="ghost-btn" aria-label="复制分享链接" title="复制分享链接">🔗 分享</button>
-        <button id="share-guide" class="ghost-btn" aria-label="查看分享方案" title="查看分享方案">分享方案</button>
-        <button id="open-lab" class="primary-btn" aria-haspopup="dialog">功能实验室</button>
+        <button id="theme-toggle" class="ghost-btn" aria-label="切换主题">外观</button>
+        <button id="open-lab" class="primary-btn">功能实验室</button>
       </div>
     </div>
   </header>
 
   <main>
-    <section id="overview" class="hero" data-animate="fade">
-      <figure class="hero-background" aria-hidden="true">
-        <img src="https://images.unsplash.com/photo-1472145246862-6b0830e2b6de?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3" alt="乡村课堂背景" />
-        <div class="hero-overlay"></div>
-      </figure>
+    <section id="overview" class="hero">
       <div class="container hero-inner">
         <div class="hero-copy">
-          <span class="eyebrow">知农课堂框架</span>
-          <h2>让乡村技能培训以旗舰官网的方式优雅呈现</h2>
-          <p>一套轻盈、克制的展示框架，专为“知识付费 + 乡村振兴”设计。以留白、清晰层次和模块化工具，将课程价值与产业故事呈现得纯粹又可信。</p>
+          <span class="eyebrow">全新发布</span>
+          <h2>乡村技能培训的<br>旗舰级体验。</h2>
+          <p>专为知识付费与乡村振兴打造。极简设计，强大功能，让每一个教育故事都生动呈现。</p>
           <div class="hero-actions">
-            <a class="primary-btn" href="#studio">探索训练工坊</a>
-            <button id="tour-btn" class="ghost-btn">快速导览</button>
+            <a class="primary-btn" href="#studio">进入工坊</a>
+            <button id="tour-btn" class="ghost-btn">观看演示</button>
           </div>
-          <div class="hero-stats">
-            <article>
-              <h3>320+</h3>
-              <p>乡村实战课程沉淀，覆盖电商、农技、匠造</p>
-            </article>
-            <article>
-              <h3>48 城</h3>
-              <p>合作产业带与示范县，打造产学研网络</p>
-            </article>
-            <article>
-              <h3>98%</h3>
-              <p>学员满意与复购，驱动持续学习闭环</p>
-            </article>
-          </div>
+        </div>
+        <div class="hero-visual-container">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2400&auto=format&fit=crop" alt="知农课堂界面预览" />
         </div>
       </div>
     </section>
 
-    <section id="value" class="value-highlights" data-animate="fade">
+    <section id="features" class="value-highlights">
       <div class="container">
         <header class="section-header">
-          <h2>核心价值主张</h2>
-          <p>用极简模块讲述真实的成长故事，并保持页面整洁、节奏舒展。</p>
+          <h2>不仅仅是好看。<br>更是生产力工具。</h2>
+          <p>每一个像素都经过精心打磨，只为提供最流畅的教学管理体验。</p>
         </header>
-        <div class="value-grid">
-          <article class="value-card">
-            <header>
-              <span class="icon">🌄</span>
-              <h3>人本叙事</h3>
-            </header>
-            <p>围绕真实学员的成长旅程设计版式，让课程价值与乡村场景自然流露。</p>
-            <ul>
-              <li>首屏故事化呈现</li>
-              <li>成果与反馈即时同步</li>
-              <li>报名路径清晰克制</li>
-            </ul>
+        
+        <div class="bento-grid">
+          <article class="bento-card large">
+            <span class="icon">❖</span>
+            <h3>模块化设计系统</h3>
+            <p>像搭积木一样构建你的课程页面。内置 30+ 种针对乡村教学场景优化的功能模块，拖拽即用。</p>
           </article>
-          <article class="value-card">
-            <header>
-              <span class="icon">📡</span>
-              <h3>内容交付矩阵</h3>
-            </header>
-            <p>直播、录播、面授与作业体系模块化组合，快速落地任意教学方案。</p>
-            <ul>
-              <li>弱网环境优化</li>
-              <li>课程排期自动生成</li>
-              <li>学习进度与考核闭环</li>
-            </ul>
+          <article class="bento-card">
+            <span class="icon">⚡️</span>
+            <h3>极速部署</h3>
+            <p>从设计到上线，仅需几分钟。支持一键导出静态页面，轻松托管至 GitHub Pages。</p>
           </article>
-          <article class="value-card">
-            <header>
-              <span class="icon">🤝</span>
-              <h3>产业闭环</h3>
-            </header>
-            <p>横向串联导师资源、合作社与渠道商，确保学以致用与产销对接。</p>
-            <ul>
-              <li>产业需求撮合</li>
-              <li>政策补贴提醒</li>
-              <li>项目孵化跟踪</li>
-            </ul>
+          <article class="bento-card">
+            <span class="icon">📱</span>
+            <h3>全端适配</h3>
+            <p>无论是在大屏电脑还是田间地头的手机上，都能获得一致的完美体验。</p>
+          </article>
+          <article class="bento-card large">
+            <span class="icon">📈</span>
+            <h3>数据驱动运营</h3>
+            <p>内置可视化数据看板，实时追踪学员活跃度、课程完课率与产业转化效果。</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="immersive-preview" data-animate="fade">
-      <div class="container preview-grid">
-        <div class="preview-copy">
-          <h2>沉浸式体验，兼顾故事与数据</h2>
-          <p>大量留白与柔和动效，让页面始终纯净。滚动间的细节亮点，既呈现数据，也保留对乡村人文的温度。</p>
-          <div class="preview-tags">
-            <span>全屏图文编排</span>
-            <span>渐进式动效</span>
-            <span>数据 Storytelling</span>
+    <section class="feature-showcase">
+      <div class="container">
+        <div class="feature-row">
+          <div class="feature-text">
+            <h3>沉浸式学习体验。</h3>
+            <p>告别枯燥的列表。我们用大图、视频和优雅的排版，将乡村实景与教学内容完美融合，让学员仿佛身临其境。</p>
+            <button class="ghost-btn" id="share-feature-btn">体验分享功能</button>
+          </div>
+          <div class="feature-image">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop" alt="沉浸式体验" />
           </div>
         </div>
-        <div class="preview-stack">
-          <figure class="stack-item" data-animate="fade">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3" alt="课堂互动场景" />
-            <figcaption>互动课堂 · 导师实时点评与线上讨论</figcaption>
-          </figure>
-          <figure class="stack-item" data-animate="fade">
-            <img src="https://images.unsplash.com/photo-1507537509458-b8312d35a233?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3" alt="乡村实地教学" />
-            <figcaption>实地教学 · 乡村基地走访记录真实成长</figcaption>
-          </figure>
-          <figure class="stack-item" data-animate="fade">
-            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3" alt="产业成果展示" />
-            <figcaption>产业闭环 · 农产品展示与品牌共创</figcaption>
-          </figure>
+
+        <div class="feature-row reverse">
+          <div class="feature-text">
+            <h3>连接产业的最后一公里。</h3>
+            <p>不仅仅是上课。内置产业对接模块，帮助学员将所学技能直接转化为经济收益，实现真正的乡村振兴。</p>
+            <button class="ghost-btn" data-resource="matchmaking">查看产业名录</button>
+          </div>
+          <div class="feature-image">
+            <img src="https://images.unsplash.com/photo-1472145246862-6b0830e2b6de?q=80&w=1600&auto=format&fit=crop" alt="产业连接" />
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="studio" class="module-studio" data-animate="fade">
+    <section id="studio" class="module-studio">
       <div class="container">
         <header class="section-header">
-          <h2>训练工坊 · 即插即用的模块工作台</h2>
-          <p>从直播课堂到导师集市，只需拖拽组合即可部署。所有模块对齐统一设计语言，自带光滑的组件肌理。</p>
+          <h2>你的控制中心。</h2>
+          <p>在一个界面管理所有课程资源。直观、高效，掌控全局。</p>
         </header>
-        <div class="studio-grid">
-          <div class="studio-brief">
-            <p>在左侧激活或创建模块，实时预览将自动更新。你可以导出配置，分享给团队作进一步开发或直接发布。</p>
-            <div class="studio-highlights">
-              <div>
-                <h3>7</h3>
-                <p>内置核心模块，覆盖课程、导师、产业、社群</p>
-              </div>
-              <div>
-                <h3>90秒</h3>
-                <p>完成一次模块编排与布局切换</p>
-              </div>
+
+        <div class="studio-workbench">
+          <aside class="studio-sidebar">
+            <h3>模块库</h3>
+            <div class="studio-controls" id="module-list">
+              <!-- 动态生成 -->
             </div>
-            <div class="layout-switcher">
-              <button class="ghost-btn" data-layout="landing">招生故事页</button>
-              <button class="ghost-btn" data-layout="workspace">学员控制台</button>
-              <button class="ghost-btn" data-layout="knowledge">知识矩阵</button>
+            <div style="margin-top: 20px;">
+              <button id="quick-module-btn" class="ghost-btn" style="width: 100%;">+ 新建模块</button>
+            </div>
+          </aside>
+          
+          <div class="studio-preview-area" id="feature-canvas">
+            <div class="studio-preview-placeholder">
+              <p>选择左侧模块开始配置</p>
             </div>
           </div>
-          <div class="studio-workbench">
-            <div class="feature-canvas canvas" id="feature-canvas" aria-live="polite"></div>
-            <aside class="module-panel">
-              <div class="panel-header">
-                <h3>模块仓库</h3>
-                <p>挑选需要的功能模块或查看详情。</p>
-              </div>
-              <div id="module-list" class="module-list"></div>
-              <div class="panel-footer">
-                <button id="quick-module-btn" class="ghost-btn">+ 快速创建占位模块</button>
-                <button id="export-config" class="ghost-btn">导出配置 JSON</button>
-              </div>
-            </aside>
-            <section class="activity-panel">
-              <header>
-                <h3>最近操作</h3>
-                <p>查看最新的直播计划、导师约课与课程配置。</p>
-              </header>
-              <ol id="activity-log" class="activity-log" aria-live="polite"></ol>
-            </section>
-          </div>
         </div>
       </div>
     </section>
 
-    <section id="timeline" class="impact-timeline" data-animate="fade">
-      <div class="container">
-        <header class="section-header">
-          <h2>推进里程碑</h2>
-          <p>沿着乡村振兴与数字技能的双轨目标，稳健推进功能与生态的搭建。</p>
-        </header>
-        <ol class="timeline-list" id="roadmap-list"></ol>
-      </div>
-    </section>
-
-    <section id="resources" class="resource-marquee" data-animate="fade">
-      <div class="container resource-grid">
-        <article class="resource-card">
-          <h3>课程交付策略手册</h3>
-          <p>直播 + 录播 + 在地作坊混合排课模板，针对乡村网络与设备优化。</p>
-          <button class="ghost-btn" data-resource="delivery">查看操作手册</button>
-        </article>
-        <article class="resource-card">
-          <h3>知识付费盈利模型</h3>
-          <p>分层定价、助学补贴与权益包示例，助力打造可持续商业闭环。</p>
-          <button class="ghost-btn" data-resource="pricing">下载配置模版</button>
-        </article>
-        <article class="resource-card">
-          <h3>乡村产业对接名录</h3>
-          <p>覆盖农产品、文旅与手工艺合作伙伴，支持学员成果转化。</p>
-          <button class="ghost-btn" data-resource="matchmaking">预约对接</button>
-        </article>
-      </div>
-    </section>
-
-    <section class="call-to-action" data-animate="fade">
-      <div class="container cta-inner">
-        <div>
-          <h2>准备将乡村课堂升级为旗舰级体验？</h2>
-          <p>立即复制链接，与团队共同打磨专属的知农课堂官网。所有模块均可扩展与接入真实业务。</p>
-        </div>
-        <div class="cta-actions">
-          <a class="primary-btn" href="#studio">开始编排模块</a>
-          <button class="ghost-btn" id="share-cta">复制分享链接</button>
+    <section id="resources" class="call-to-action">
+      <div class="container" style="text-align: center; padding: 100px 0;">
+        <h2 style="font-size: 40px; margin-bottom: 20px;">准备好开始了吗？</h2>
+        <p style="font-size: 21px; color: var(--text-secondary); margin-bottom: 40px;">立即加入知农课堂 Pro，开启乡村教育新篇章。</p>
+        <div class="hero-actions">
+          <button class="primary-btn" id="export-config-cta">下载配置</button>
+          <button class="ghost-btn" id="share-guide-cta">获取指南</button>
         </div>
       </div>
     </section>
@@ -235,48 +142,46 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>以数字技能撬动乡村振兴。复制链接，与团队共建知农课堂。</p>
-      <small>知农课堂框架 · 支持知识付费项目快速落地 · <span id="year"></span></small>
+      <div class="footer-content">
+        <p class="copyright">Copyright © 2024 知农课堂 Pro. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="#">隐私政策</a>
+          <a href="#">使用条款</a>
+          <a href="#">联系我们</a>
+        </div>
+      </div>
     </div>
   </footer>
 
-  <div id="module-modal" class="modal hidden" role="dialog" aria-modal="true">
+  <!-- 模态框和抽屉保持不变，但样式会适配 -->
+  <div id="module-modal" class="modal hidden">
     <div class="modal-content">
-      <button id="modal-close" class="ghost-btn close-btn" aria-label="关闭">✕</button>
+      <button id="modal-close" class="ghost-btn close-btn">✕</button>
       <div id="modal-body"></div>
     </div>
   </div>
 
-  <section id="command-lab" class="drawer hidden" aria-label="功能实验室" aria-hidden="true">
+  <section id="command-lab" class="drawer hidden">
     <div class="drawer-header">
       <h2>功能实验室</h2>
-      <p>以可视化方式组合模块、调整布局与导出配置。</p>
-      <button id="lab-close" class="ghost-btn" aria-label="关闭实验室">✕</button>
+      <button id="lab-close" class="ghost-btn">✕</button>
     </div>
     <div class="drawer-body">
       <div class="lab-section">
-        <h3>快速操作</h3>
+        <h3>操作</h3>
         <div class="lab-actions">
-          <button class="primary-btn" data-lab="reset">重置工作区</button>
-          <button class="ghost-btn" data-lab="sync">同步到本地存储</button>
-          <button class="ghost-btn" data-lab="inspect">查看状态</button>
+          <button class="primary-btn" data-lab="reset">重置</button>
+          <button class="ghost-btn" data-lab="sync">同步</button>
         </div>
       </div>
       <div class="lab-section">
-        <h3>模块统计</h3>
+        <h3>统计</h3>
         <div id="lab-stats" class="lab-stats"></div>
-      </div>
-      <div class="lab-section">
-        <h3>布局标记</h3>
-        <label class="toggle">
-          <input id="grid-toggle" type="checkbox">
-          <span>显示布局辅助网格</span>
-        </label>
       </div>
     </div>
   </section>
 
-  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+  <div id="toast" class="toast hidden"></div>
 
   <script src="app.js"></script>
 </body>
