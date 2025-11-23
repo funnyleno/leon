@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>训练工坊 · 知农课堂 Pro</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Studio 专属样式覆盖 */
+    body { background: var(--bg); overflow: hidden; height: 100vh; display: flex; flex-direction: column; }
+    .site-header { position: relative; background: var(--surface); border-bottom: 1px solid var(--divider); }
+    main { flex: 1; display: flex; overflow: hidden; }
+    .studio-layout { display: flex; width: 100%; height: 100%; }
+    
+    /* 侧边栏 */
+    .studio-sidebar {
+      width: 320px;
+      background: var(--surface-alt);
+      border-right: 1px solid var(--divider);
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    
+    .sidebar-header { margin-bottom: 20px; }
+    .sidebar-header h2 { font-size: 18px; margin: 0 0 8px; }
+    .sidebar-header p { font-size: 13px; color: var(--text-secondary); margin: 0; }
+
+    /* 模块列表优化 */
+    .module-list { display: flex; flex-direction: column; gap: 12px; }
+    .module-item {
+      background: var(--surface);
+      border: 1px solid var(--divider);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .module-item:hover { border-color: var(--primary); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+    .module-item.active { border-color: var(--primary); background: rgba(0,113,227,0.05); }
+    .module-icon { font-size: 24px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--surface-alt); border-radius: 8px; }
+    .module-info { flex: 1; }
+    .module-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+    .module-desc { font-size: 12px; color: var(--text-secondary); display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    
+    /* 主画布 */
+    .studio-canvas {
+      flex: 1;
+      background: var(--bg);
+      padding: 40px;
+      overflow-y: auto;
+      position: relative;
+    }
+    
+    .canvas-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+    .canvas-title h1 { font-size: 24px; margin: 0; }
+    
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    /* 实验室抽屉 */
+    .drawer { position: absolute; top: 0; right: 0; bottom: 0; width: 300px; background: var(--surface); border-left: 1px solid var(--divider); transform: translateX(100%); transition: transform 0.3s; z-index: 100; box-shadow: -5px 0 20px rgba(0,0,0,0.05); }
+    .drawer:not(.hidden) { transform: translateX(0); }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner" style="max-width: none; padding: 0 24px;">
+      <a href="index.html" class="brand">
+        <span class="brand-title">知农课堂 Pro</span>
+        <span style="opacity: 0.5; font-size: 14px; margin-left: 8px;">/ 训练工坊</span>
+      </a>
+      <div class="header-tools">
+        <button id="theme-toggle" class="ghost-btn">外观</button>
+        <button id="open-lab" class="ghost-btn">实验室</button>
+        <button id="export-config" class="primary-btn">导出配置</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="studio-layout">
+      <aside class="studio-sidebar">
+        <div class="sidebar-header">
+          <h2>模块库</h2>
+          <p>拖拽或点击添加功能模块</p>
+        </div>
+        <div id="module-list" class="module-list">
+          <!-- 动态生成 -->
+        </div>
+        <div style="margin-top: 20px;">
+          <button id="quick-module-btn" class="ghost-btn" style="width: 100%;">+ 自定义模块</button>
+        </div>
+      </aside>
+      
+      <section class="studio-canvas">
+        <div class="canvas-header">
+          <div class="canvas-title">
+            <h1>工作区预览</h1>
+          </div>
+          <div class="canvas-actions">
+            <button class="ghost-btn" id="grid-toggle-btn">显示网格</button>
+          </div>
+        </div>
+        <div id="feature-canvas" class="feature-grid">
+          <!-- 动态生成 -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <section id="command-lab" class="drawer hidden">
+    <div class="drawer-header" style="padding: 20px; border-bottom: 1px solid var(--divider); display: flex; justify-content: space-between; align-items: center;">
+      <h2 style="margin: 0; font-size: 16px;">功能实验室</h2>
+      <button id="lab-close" class="ghost-btn" style="padding: 4px 8px;">✕</button>
+    </div>
+    <div class="drawer-body" style="padding: 20px;">
+      <div class="lab-section" style="margin-bottom: 30px;">
+        <h3 style="font-size: 12px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 10px;">操作</h3>
+        <div class="lab-actions" style="display: flex; flex-direction: column; gap: 10px;">
+          <button class="ghost-btn" data-lab="reset" style="width: 100%; text-align: left;">重置工作区</button>
+          <button class="ghost-btn" data-lab="sync" style="width: 100%; text-align: left;">同步到本地</button>
+          <button class="ghost-btn" data-lab="inspect" style="width: 100%; text-align: left;">查看状态快照</button>
+        </div>
+      </div>
+      <div class="lab-section">
+        <h3 style="font-size: 12px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 10px;">统计</h3>
+        <div id="lab-stats" class="lab-stats" style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;"></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="module-modal" class="modal hidden">
+    <div class="modal-content">
+      <button id="modal-close" class="ghost-btn close-btn">✕</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="app.js"></script>
+  <script>
+    // 简单的页面初始化逻辑，覆盖 app.js 中的部分行为
+    document.body.classList.add('studio-page');
+    
+    // 覆盖 renderModuleLibrary 以适配新样式
+    const originalRenderModuleLibrary = window.renderModuleLibrary;
+    window.renderModuleLibrary = function() {
+      if(!selectors.moduleList) return;
+      selectors.moduleList.innerHTML = '';
+      modules.forEach(mod => {
+        const isActive = state.activeModules.includes(mod.id);
+        const item = document.createElement('div');
+        item.className = `module-item ${isActive ? 'active' : ''}`;
+        item.onclick = (e) => {
+            if(e.target.tagName === 'BUTTON') return;
+            if(isActive) removeModule(mod.id);
+            else addModule(mod.id);
+        };
+        
+        item.innerHTML = `
+          <div class="module-icon">${mod.icon || '🧩'}</div>
+          <div class="module-info">
+            <div class="module-title">${mod.title}</div>
+            <div class="module-desc">${mod.description}</div>
+          </div>
+          <button class="ghost-btn" style="padding: 4px 8px; font-size: 12px;" data-action="inspect" data-id="${mod.id}">i</button>
+        `;
+        selectors.moduleList.appendChild(item);
+      });
+    };
+    
+    // 重新初始化
+    if(window.bootstrap) window.bootstrap();
+  </script>
+</body>
+</html>

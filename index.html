@@ -15,7 +15,7 @@
       <nav class="nav">
         <a href="#overview">概览</a>
         <a href="#features">特性</a>
-        <a href="#studio">工坊</a>
+        <a href="studio.html">工坊</a>
         <a href="#resources">资源</a>
       </nav>
       <div class="header-tools">
@@ -26,20 +26,19 @@
   </header>
 
   <main>
-    <section id="overview" class="hero">
-      <div class="container hero-inner">
-        <div class="hero-copy">
-          <span class="eyebrow">全新发布</span>
-          <h2>乡村技能培训的<br>旗舰级体验。</h2>
-          <p>专为知识付费与乡村振兴打造。极简设计，强大功能，让每一个教育故事都生动呈现。</p>
-          <div class="hero-actions">
-            <a class="primary-btn" href="#studio">进入工坊</a>
-            <button id="tour-btn" class="ghost-btn">观看演示</button>
-          </div>
+    <section id="overview" class="hero dark-hero">
+      <div class="hero-content">
+        <h1 class="hero-title">知农课堂 Pro</h1>
+        <p class="hero-subtitle">全 Pro 实力进发</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="studio.html">进入工坊</a>
+          <a class="ghost-btn" href="#features">进一步了解</a>
         </div>
-        <div class="hero-visual-container">
-          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2400&auto=format&fit=crop" alt="知农课堂界面预览" />
-        </div>
+      </div>
+      <div class="hero-bg-image">
+        <!-- 使用 CSS 渐变模拟高级暗色背景，或者使用一张高质量的暗色图片 -->
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2800&auto=format&fit=crop" alt="Background" />
+        <div class="hero-overlay-gradient"></div>
       </div>
     </section>
 
@@ -101,31 +100,8 @@
       </div>
     </section>
 
-    <section id="studio" class="module-studio">
-      <div class="container">
-        <header class="section-header">
-          <h2>你的控制中心。</h2>
-          <p>在一个界面管理所有课程资源。直观、高效，掌控全局。</p>
-        </header>
-
-        <div class="studio-workbench">
-          <aside class="studio-sidebar">
-            <h3>模块库</h3>
-            <div class="studio-controls" id="module-list">
-              <!-- 动态生成 -->
-            </div>
-            <div style="margin-top: 20px;">
-              <button id="quick-module-btn" class="ghost-btn" style="width: 100%;">+ 新建模块</button>
-            </div>
-          </aside>
-          
-          <div class="studio-preview-area" id="feature-canvas">
-            <div class="studio-preview-placeholder">
-              <p>选择左侧模块开始配置</p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <section id="studio" class="module-studio" style="display: none;">
+      <!-- Studio 已移动到 studio.html -->
     </section>
 
     <section id="resources" class="call-to-action">
