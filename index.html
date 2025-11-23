@@ -43,72 +43,34 @@
           Tip: To use a custom background image, place your image file in the project folder 
           (e.g., named 'bg.jpg') and change the src below to "bg.jpg".
         -->
-        <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=2400&auto=format&fit=crop" alt="Background" />
+        <img src="grah/1.sony.jpg" />
         <div class="hero-overlay-gradient"></div>
       </div>
     </section>
 
-    <!-- Section 2: Features (Bento Grid) -->
+    <!-- Section 2: About Us Teaser -->
     <section id="features" class="immersive-section">
       <div class="immersive-bg">
-        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=2400&auto=format&fit=crop" alt="Features Background" />
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=2400&auto=format&fit=crop" alt="About Background" />
         <div style="position:absolute;inset:0;background:rgba(0,0,0,0.6);"></div>
       </div>
-      <div class="immersive-content">
-        <header class="section-header">
-          <h2>不仅是工具。<br>更是连接城乡的桥梁。</h2>
-          <p>每一个像素都经过精心打磨，只为提供最流畅的教学管理体验。</p>
-        </header>
-        
-        <div class="bento-grid">
-          <article class="bento-card large">
-            <span class="icon">❖</span>
-            <h3>模块化设计系统</h3>
-            <p>像搭积木一样构建你的课程页面。内置 30+ 种针对乡村教学场景优化的功能模块，拖拽即用。</p>
-          </article>
-          <article class="bento-card">
-            <span class="icon">⚡️</span>
-            <h3>极速部署</h3>
-            <p>从设计到上线，仅需几分钟。支持一键导出静态页面，轻松托管至 GitHub Pages。</p>
-          </article>
-          <article class="bento-card">
-            <span class="icon">📱</span>
-            <h3>全端适配</h3>
-            <p>无论是在大屏电脑还是田间地头的手机上，都能获得一致的完美体验。</p>
-          </article>
-          <article class="bento-card large">
-            <span class="icon">📈</span>
-            <h3>数据驱动运营</h3>
-            <p>内置可视化数据看板，实时追踪学员活跃度、课程完课率与产业转化效果。</p>
-          </article>
-        </div>
+      <div class="immersive-content" style="text-align: center;">
+        <h2 style="font-size: 56px; margin-bottom: 24px; font-weight: 600; color: #fff;">不仅是工具。<br>更是连接城乡的桥梁。</h2>
+        <p style="font-size: 24px; color: #d2d2d7; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto;">每一个像素都经过精心打磨，只为提供最流畅的教学管理体验。</p>
+        <a href="about.html" class="ghost-btn" style="font-size: 19px; padding: 14px 30px;">了解我们</a>
       </div>
     </section>
 
-    <!-- Section 3: Showcase 1 -->
+    <!-- Section 3: Share -->
     <section class="immersive-section">
       <div class="immersive-bg">
-        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2400&auto=format&fit=crop" alt="Showcase 1" />
-      </div>
-      <div class="immersive-content">
-        <div class="showcase-content">
-          <h3>沉浸式学习体验。</h3>
-          <p>告别枯燥的列表。我们用大图、视频和优雅的排版，将乡村实景与教学内容完美融合，让学员仿佛身临其境。</p>
-          <button class="ghost-btn" id="share-feature-btn">体验分享功能</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section 4: Showcase 2 -->
-    <section class="immersive-section">
-      <div class="immersive-bg">
-        <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=2400&auto=format&fit=crop" alt="Showcase 2" />
+        <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=2400&auto=format&fit=crop" alt="Share Background" />
       </div>
       <div class="immersive-content">
         <div class="showcase-content right">
-          <h2>连接产业的最后一公里。</h2>
-          <p>不仅仅是上课。内置产业对接模块，帮助学员将所学技能直接转化为经济收益，实现真正的乡村振兴。</p>
-          <button class="ghost-btn" data-resource="matchmaking">查看产业名录</button>
+          <h2>让知识传得更远。</h2>
+          <p>好的工具值得被更多人看见。一键分享知农课堂 Pro，让更多乡村教育者加入这场数字化变革。</p>
+          <button class="ghost-btn" id="share-site-btn">分享官网</button>
         </div>
       </div>
     </section>
@@ -140,6 +102,21 @@
       </div>
     </div>
   </footer>
+
+  <!-- Share Modal -->
+  <div id="share-modal" class="modal hidden">
+    <div class="modal-content share-modal-content">
+      <button id="share-modal-close" class="ghost-btn close-btn">✕</button>
+      <div class="share-body">
+        <h3>分享知农课堂 Pro</h3>
+        <p>复制下方链接，发送给需要的人。</p>
+        <div class="link-box">
+          <input type="text" value="https://funnyleno.github.io/leon" readonly id="share-link-input">
+          <button class="primary-btn" id="copy-link-btn">复制</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- 模态框和抽屉保持不变，但样式会适配 -->
   <div id="module-modal" class="modal hidden">

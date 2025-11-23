@@ -765,6 +765,54 @@ main section { padding: 80px 0; }
   margin-top: 10px;
 }
 
+/* Share Modal Styles */
+.share-modal-content {
+  max-width: 500px;
+  background: rgba(28, 28, 30, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 40px;
+  text-align: center;
+  color: #fff;
+}
+
+.share-body h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.share-body p {
+  color: #86868b;
+  margin-bottom: 30px;
+}
+
+.link-box {
+  display: flex;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 6px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.link-box input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #fff;
+  padding: 0 12px;
+  font-size: 15px;
+  outline: none;
+  font-family: monospace;
+}
+
+.link-box button {
+  padding: 8px 20px;
+  font-size: 14px;
+}
+
 /* 适配移动端 */
 @media (max-width: 768px) {
   .hero-title { font-size: 40px; }

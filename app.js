@@ -1371,6 +1371,52 @@ function bootstrap(){
   updateLabStats();
   initYear();
   initRevealAnimations();
+  initShareModal();
+}
+
+function initShareModal() {
+  const shareBtn = document.getElementById('share-site-btn');
+  const modal = document.getElementById('share-modal');
+  const closeBtn = document.getElementById('share-modal-close');
+  const copyBtn = document.getElementById('copy-link-btn');
+  const input = document.getElementById('share-link-input');
+
+  if (shareBtn && modal) {
+    shareBtn.addEventListener('click', () => {
+      modal.classList.remove('hidden');
+    });
+  }
+
+  if (closeBtn && modal) {
+    closeBtn.addEventListener('click', () => {
+      modal.classList.add('hidden');
+    });
+  }
+
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+      }
+    });
+  }
+
+  if (copyBtn && input) {
+    copyBtn.addEventListener('click', () => {
+      input.select();
+      input.setSelectionRange(0, 99999); // For mobile devices
+      navigator.clipboard.writeText(input.value).then(() => {
+        showToast('链接已复制到剪贴板');
+        copyBtn.textContent = '已复制';
+        setTimeout(() => {
+          copyBtn.textContent = '复制';
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+        showToast('复制失败，请手动复制');
+      });
+    });
+  }
 }
 
 bootstrap();
