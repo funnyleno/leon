@@ -483,6 +483,40 @@ main section { padding: 80px 0; }
 
 .toast.hidden { opacity: 0; transform: translate(-50%, 20px); pointer-events: none; }
 
+/* Immersive Section System */
+.immersive-section {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #fff;
+  padding: 100px 0;
+}
+
+.immersive-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.immersive-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7); /* 降低亮度以突出文字 */
+}
+
+.immersive-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
 /* Dark Hero Section (iPhone Pro Style) */
 .dark-hero {
   position: relative;
@@ -494,7 +528,7 @@ main section { padding: 80px 0; }
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 120px;
+  padding-top: 140px; /* 增加顶部留白 */
   overflow: hidden;
 }
 
@@ -503,21 +537,22 @@ main section { padding: 80px 0; }
   z-index: 10;
   text-align: center;
   max-width: 800px;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 
 .hero-title {
-  font-size: 56px;
+  font-size: 64px; /* 加大字号 */
   font-weight: 600;
-  margin: 0 0 10px;
-  letter-spacing: -0.005em;
+  margin: 0 0 16px;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
 }
 
 .hero-subtitle {
   font-size: 28px;
   font-weight: 400;
-  color: #86868b;
-  margin: 0 0 24px;
+  color: #a1a1a6;
+  margin: 0 0 32px;
 }
 
 .hero-actions {
@@ -530,22 +565,22 @@ main section { padding: 80px 0; }
   background: #0071e3;
   color: #fff;
   border-radius: 980px;
-  padding: 8px 16px;
-  font-size: 14px;
+  padding: 12px 24px;
+  font-size: 17px;
 }
 
 .dark-hero .ghost-btn {
-  background: transparent;
-  color: #2997ff;
-  border: 1px solid #2997ff;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: none;
   border-radius: 980px;
-  padding: 8px 16px;
-  font-size: 14px;
+  padding: 12px 24px;
+  font-size: 17px;
+  backdrop-filter: blur(10px);
 }
 
 .dark-hero .ghost-btn:hover {
-  background: #2997ff;
-  color: #fff;
+  background: rgba(255,255,255,0.2);
 }
 
 .hero-bg-image {
@@ -561,8 +596,7 @@ main section { padding: 80px 0; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center bottom; /* 让图片主体靠下 */
-  opacity: 0.8;
+  object-position: center bottom;
 }
 
 .hero-overlay-gradient {
@@ -570,16 +604,81 @@ main section { padding: 80px 0; }
   top: 0;
   left: 0;
   width: 100%;
-  height: 40%;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+  height: 50%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
   z-index: 2;
+}
+
+/* Bento Grid Dark Mode Adaptation */
+.immersive-section .bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.immersive-section .bento-card {
+  background: rgba(28, 28, 30, 0.6); /* 半透明深色背景 */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+.immersive-section .bento-card.large {
+  background: rgba(44, 44, 46, 0.6);
+}
+
+.immersive-section .bento-card p {
+  color: #86868b;
+}
+
+.immersive-section .section-header h2 {
+  color: #fff;
+  font-size: 48px;
+}
+
+.immersive-section .section-header p {
+  color: #a1a1a6;
+}
+
+/* Showcase Section Adaptation */
+.showcase-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 500px;
+  padding: 40px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  margin-left: 5%; /* 靠左布局 */
+}
+
+.showcase-content.right {
+  margin-left: auto;
+  margin-right: 5%; /* 靠右布局 */
+}
+
+.showcase-content h3 {
+  font-size: 40px;
+  margin: 0 0 20px;
+  font-weight: 600;
+}
+
+.showcase-content p {
+  font-size: 19px;
+  line-height: 1.5;
+  color: #d2d2d7;
+  margin-bottom: 30px;
 }
 
 /* 适配移动端 */
 @media (max-width: 768px) {
   .hero-title { font-size: 40px; }
   .hero-subtitle { font-size: 21px; }
-  .hero-bg-image img { object-position: center; }
+  .immersive-section .bento-grid { grid-template-columns: 1fr; }
+  .immersive-section .bento-card.large { grid-column: span 1; }
+  .showcase-content { margin: 0 20px; max-width: none; }
 }
 
 /* 响应式调整 */
