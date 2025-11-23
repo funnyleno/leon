@@ -6,89 +6,102 @@
   <title>理念与远景 - 知农课堂 Pro</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* About Page Specific Styles */
-    .about-hero {
-      min-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 100px 20px;
-      background: #000;
+    /* About Page Specific Styles - Light Theme & Typography Focus */
+    body {
+      background-color: #f5f5f7;
+      color: #1d1d1f;
     }
 
-    .about-hero h1 {
-      font-size: 80px;
-      font-weight: 700;
-      background: linear-gradient(180deg, #fff 0%, #86868b 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 20px;
-      letter-spacing: -0.02em;
+    .site-header {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
     }
 
-    .about-hero p {
-      font-size: 32px;
-      color: #86868b;
+    .brand-title {
+      color: #1d1d1f;
+    }
+
+    .nav a {
+      color: #1d1d1f;
+    }
+
+    .nav a:hover {
+      color: #0071e3;
+    }
+
+    .ghost-btn {
+      color: #0071e3;
+      background: rgba(0, 113, 227, 0.1);
+    }
+
+    .ghost-btn:hover {
+      background: rgba(0, 113, 227, 0.2);
+    }
+
+    .about-container {
       max-width: 800px;
-      line-height: 1.4;
-    }
-
-    .content-section {
-      padding: 150px 20px;
-      background: #000;
-      color: #f5f5f7;
-    }
-
-    .content-container {
-      max-width: 980px;
       margin: 0 auto;
+      padding: 120px 24px 60px;
     }
 
-    .big-statement {
-      font-size: 56px;
-      font-weight: 600;
-      line-height: 1.1;
-      margin-bottom: 60px;
-    }
-
-    .detail-text {
-      font-size: 21px;
-      line-height: 1.6;
-      color: #a1a1a6;
-      max-width: 600px;
-    }
-
-    .detail-text strong {
-      color: #fff;
-      font-weight: 600;
-    }
-
-    .image-break {
-      width: 100%;
-      height: 600px;
-      margin: 100px 0;
-      overflow: hidden;
-      border-radius: 30px;
-    }
-
-    .image-break img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* Fade in animation */
-    .fade-in {
+    .chapter {
+      margin-bottom: 120px;
       opacity: 0;
       transform: translateY(30px);
-      transition: opacity 1s ease, transform 1s ease;
+      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .fade-in.visible {
+    .chapter.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    .chapter-title {
+      font-size: 48px;
+      line-height: 1.1;
+      font-weight: 700;
+      margin-bottom: 40px;
+      background: linear-gradient(135deg, #1d1d1f 0%, #424245 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .chapter-text {
+      font-size: 21px;
+      line-height: 1.6;
+      color: #424245;
+      font-weight: 400;
+    }
+
+    .chapter-text p {
+      margin-bottom: 24px;
+    }
+
+    .highlight {
+      color: #0071e3;
+      font-weight: 600;
+    }
+
+    .quote-box {
+      border-left: 4px solid #0071e3;
+      padding-left: 24px;
+      margin: 40px 0;
+      font-style: italic;
+      color: #1d1d1f;
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    /* Animation Delays */
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+
+    .site-footer {
+      background: #f5f5f7;
+      color: #86868b;
+      border-top: 1px solid rgba(0,0,0,0.05);
     }
   </style>
 </head>
@@ -110,41 +123,52 @@
     </div>
   </header>
 
-  <main>
-    <section class="about-hero">
-      <h1 class="fade-in">重新定义<br>乡村教育。</h1>
-      <p class="fade-in">我们不只是在制造工具，<br>而是在构建连接未来的桥梁。</p>
-    </section>
-
-    <section class="content-section">
-      <div class="content-container">
-        <div class="big-statement fade-in">
-          技术应当服务于人，<br>而不是让人去适应技术。
-        </div>
-        <div class="detail-text fade-in">
-          <p>在知农课堂 Pro 的设计之初，我们就确立了一个核心原则：<strong>极简即是包容</strong>。乡村教育面临的最大挑战不是缺乏内容，而是获取内容的门槛太高。复杂的界面、繁琐的操作，将最需要知识的人挡在了门外。</p>
-          <br>
-          <p>因此，我们剥离了所有不必要的元素，只保留最核心的功能。每一个按钮的大小、每一段文字的间距，都经过了数百次的推敲，只为让从未接触过互联网的老农，也能凭直觉找到他需要的知识。</p>
-        </div>
+  <main class="about-container">
+    <!-- Chapter 1: Intro -->
+    <section class="chapter visible">
+      <h1 class="chapter-title">在希望的田野上。</h1>
+      <div class="chapter-text">
+        <p>每一寸土地都承载着记忆，每一个村庄都诉说着故事。我们的乡村振兴项目，是一场关于回归与重生的实践。</p>
+        <p>我们相信，真正的振兴不是推倒重来，而是聆听土地的呼吸，唤醒沉睡的资源，让乡村在新时代绽放独特的光芒。这里，有老槐树下代代相传的智慧，有青山绿水间生生不息的活力，更有无数平凡人用双手编织不凡生活的温暖故事。</p>
       </div>
     </section>
 
-    <div class="content-container">
-      <div class="image-break fade-in">
-        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2800&auto=format&fit=crop" alt="Field" />
+    <!-- Chapter 2: Vision -->
+    <section class="chapter">
+      <h2 class="chapter-title">诗意栖居，活力共创。</h2>
+      <div class="chapter-text">
+        <p>我们的愿景，是让乡村成为一片“诗意栖居、活力共创”的热土。想象这样的画面：曾经荒芜的院落飘起咖啡香，闲置的老宅变身创意工坊，村民不再背井离乡，而是在家门口实现梦想；游客慕名而来，不仅为了一抹乡愁，更为体验农耕的踏实、手作的温度、邻里间的笑语。</p>
+        <div class="quote-box">
+          就像西磑村那样，从“灰头土脸”到“诗意田园”，蜕变的关键在于激发内生动力。
+        </div>
+        <p>我们追求的，正是这样一幅“各美其美、美美与共”的现代乡村画卷——产业因特色而兴旺，文化因传承而深厚，生态因守护而宜居，生活因奋斗而富裕。</p>
       </div>
-    </div>
+    </section>
 
-    <section class="content-section">
-      <div class="content-container" style="text-align: right;">
-        <div class="big-statement fade-in" style="margin-left: auto; max-width: 800px;">
-          让每一块屏幕，<br>都成为致富的窗口。
-        </div>
-        <div class="detail-text fade-in" style="margin-left: auto;">
-          <p>我们的愿景不仅止于教育。通过内置的产业对接模块，我们致力于打通“学习-生产-销售”的闭环。当知识转化为技能，技能转化为产品，产品转化为收益，教育才真正完成了它的使命。</p>
-          <br>
-          <p>这就是知农课堂 Pro。<strong>扎根乡土，仰望星空。</strong></p>
-        </div>
+    <!-- Chapter 3: Stories -->
+    <section class="chapter">
+      <h2 class="chapter-title">故事是最好的载体。</h2>
+      <div class="chapter-text">
+        <p>我们关注如何让“人”成为主角：比如楂树坪村的许长凤，从普通农妇变成民宿老板，年收入大幅增长，脸上藏不住的笑意，正是乡村振兴最生动的注脚；又如贯堡渡村的编织合作社，让村民在照顾家庭的同时，靠手艺增加收入，找回生活的主动权。</p>
+        <p>这些故事无关宏大的口号，而是具体而微的幸福——是孩子能在干净整洁的村道上奔跑，是老人能在日间照料中心安享晚年，是游客的一句“这里像家一样”的感叹。我们希望通过<span class="highlight">产业融合、数字赋能、文化浸润</span>，让这样的故事遍地开花。</p>
+      </div>
+    </section>
+
+    <!-- Chapter 4: History -->
+    <section class="chapter">
+      <h2 class="chapter-title">敬畏历史，延续灵魂。</h2>
+      <div class="chapter-text">
+        <p>我们深知，乡村振兴离不开对历史的敬畏与延续。村史馆里发黄的照片、古树下流传的谚语、节庆时响起的乡音，都是乡村的灵魂。我们致力于保护这些记忆，让老建筑讲故事，让文化墙会说话，使传统技艺与现代设计碰撞出新的火花。</p>
+        <p>就像长岭岗的林海花海，不仅吸引游客，更让村民自豪于家乡的美丽——生态“颜值”就这样转化为经济“价值”，绿水青山真正成了致富的“靠山”。</p>
+      </div>
+    </section>
+
+    <!-- Chapter 5: Conclusion -->
+    <section class="chapter">
+      <h2 class="chapter-title">连接。</h2>
+      <div class="chapter-text">
+        <p>最终，这一切都关乎“连接”：连接城市与乡村的资源，连接传统与创新的智慧，连接个体与社区的梦想。</p>
+        <p>我们期待与您携手，共同在这片充满希望的田野上，播种、耕耘、收获，让每一个乡村都成为心之向往的故乡，让振兴的篇章，由你我共同书写。</p>
       </div>
     </section>
   </main>
@@ -156,16 +180,16 @@
   </footer>
 
   <script>
-    // Simple Intersection Observer for fade-in effects
+    // Intersection Observer for scroll animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
 
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    document.querySelectorAll('.chapter').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
